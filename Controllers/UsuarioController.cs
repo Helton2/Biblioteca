@@ -8,7 +8,7 @@ namespace Biblioteca.Controllers
         public IActionResult ListaDeUsuarios()
         {
             Autenticacao.CheckLogin(this);
-            //Autenticacao.verifcaSeUsuarioEAdmin(this);
+            Autenticacao.verifcaSeUsuarioEAdmin(this);
 
             return View(new UsuarioService().Listar());
         }
@@ -28,7 +28,7 @@ namespace Biblioteca.Controllers
         public IActionResult RegistrarUsuarios()
         {
             Autenticacao.CheckLogin(this);
-            //Autenticacao.verifcaSeUsuarioEAdmin(this);
+            Autenticacao.verifcaSeUsuarioEAdmin(this);
 
             return View();
         }
@@ -36,9 +36,9 @@ namespace Biblioteca.Controllers
         public IActionResult RegistrarUsuarios(Usuario novoUser)
         {
             Autenticacao.CheckLogin(this);
-            //Autenticacao.verifcaSeUsuarioEAdmin(this);
+            Autenticacao.verifcaSeUsuarioEAdmin(this);
 
-            //novoUser.Senha = Criptografo.TextoCriptografo(novoUser.Senha);
+            novoUser.Senha = Criptografo.TextoCriptografado(novoUser.Senha);
 
             UsuarioService us = new UsuarioService();
             us.incluirUsuario(novoUser);
@@ -68,7 +68,7 @@ namespace Biblioteca.Controllers
         public IActionResult cadastroRealizado()
         {
             Autenticacao.CheckLogin(this);
-            //Autenticacao.verifcaSeUsuarioEAdmin(this);
+            Autenticacao.verifcaSeUsuarioEAdmin(this);
 
             return View();
         }
