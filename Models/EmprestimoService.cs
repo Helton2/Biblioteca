@@ -66,7 +66,7 @@ namespace Biblioteca.Models
                     query = bc.Emprestimos;
                 }
 
-                List<Emprestimo>ListaQuery = query.OrderBy(e => e.DataEmprestimo).ToList();
+                List<Emprestimo>ListaQuery = query.OrderByDescending(e => e.DataDevolucao).ToList();
                 for (int i = 0; i < ListaQuery.Count; i++)
                 {
                     ListaQuery[i].Livro = bc.Livros.Find(ListaQuery[i].LivroId);
